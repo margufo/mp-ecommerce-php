@@ -51,7 +51,7 @@ $payer = new MercadoPago\Payer();
     "zip_code" => "1111"
   );
 
-$preference->payer = array($payer);
+//$preference->payer = array($payer);
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
@@ -205,10 +205,10 @@ $preference->save();
                                     <form action="/procesar-pago" method="POST">
                                     <script
                                     src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
-                                    data-preference-id="<?php echo $preference->id; ?>">
+                                    data-preference-id="<?php echo $preference->id; ?>" data-button-label="Pagar la compra">
                                     </script>
                                     
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar la compra</button>
+                                    <!--button type="submit" class="mercadopago-button" formmethod="post">Pagar la compra</button-->
                                     </form>
                                 </div>
                             </div>
