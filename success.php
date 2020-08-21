@@ -4,7 +4,7 @@
 <?php
 
 $payment_id = $_GET['collection_id'];
-$external_ref = $_GET['external_ref'];
+$external_reference = $_GET['external_reference'];
 $payment_type = $_GET['payment_type'];
 
 //collection_status=approved
@@ -19,7 +19,7 @@ $payment_type = $_GET['payment_type'];
 <p>
 Su pago fué registrado con el ID: <?php echo $payment_id; ?><br>
 Medio de pago utilizado: <?php echo $payment_type; ?><br>
-Referencia: <?php echo $external_ref; ?><br>
+Referencia: <?php echo $external_reference; ?><br>
 
 <a href="/">Seguir comprando</a>
 </div>
