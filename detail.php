@@ -32,6 +32,9 @@ $preference->auto_return = "approved";
 // url de notificaciones
 $preference->notification_url = "https://margufo-mp-commerce-php.herokuapp.com/notificaciones/";
 
+//Definir init point
+$preference->init_point = "";
+
 //datos del pagador
 $payer = new MercadoPago\Payer();
   $payer->name = "Lalo";
@@ -208,14 +211,15 @@ $preference->save();
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <form action="/procesar-pago" method="POST">
+                                    <a href="<?php echo $preference->init_point; ?>">Pagar la compra</a>
+                                    <!--form action="/procesar-pago" method="POST">
                                     <script
                                     src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
                                     data-preference-id="<?php echo $preference->id; ?>" data-button-label="Pagar la compra">
                                     </script>
                                     
-                                    <!--button type="submit" class="mercadopago-button" formmethod="post">Pagar la compra</button-->
-                                    </form>
+                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar la compra</button>
+                                    </form-->
                                 </div>
                             </div>
                         </div>
