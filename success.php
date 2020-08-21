@@ -19,7 +19,7 @@ $payment_type = $_GET['payment_type'];
 <p>
 Su pago fué registrado con el ID: <?php echo $payment_id; ?><br>
 Medio de pago utilizado: <?php echo $payment_type; ?><br>
-Referencia: <?php echo $payment_type; ?><br>
+Referencia: <?php echo $external_ref; ?><br>
 
 <a href="/">Seguir comprando</a>
 </div>
