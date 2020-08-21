@@ -59,6 +59,9 @@ $payer = new MercadoPago\Payer();
 
 $preference->payer = $payer;
 
+//agregamos external
+$preference->external_reference = "margufo@gmail.com";
+
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
 $item->id = "1234";
@@ -69,8 +72,6 @@ $item->quantity = 1;
 //$item->currency_id = "ARS";
 $item->picture_url=str_replace("./","https://margufo-mp-commerce-php.herokuapp.com/",$_POST['img']);;
 $item->unit_price = $_POST['price'];
-$item->external_reference = "margufo@gmail.com";
-
 $preference->items = array($item);
 
 $preference->save();
