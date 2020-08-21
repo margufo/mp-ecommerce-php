@@ -1,4 +1,76 @@
 <!DOCTYPE html>
+<?php
+// SDK de Mercado Pago
+require __DIR__ .  '/vendor/autoload.php';
+
+// Agrega credenciales
+MercadoPago\SDK::setAccessToken('APP_USR-6317427424180639-042414-47e969706991d3a442922b0702a0da44-469485398');
+MercadoPago\SDK::setIntegratorId("dev_24c65fb163bf11ea96500242ac130004");
+
+// Crea un objeto de preferencia
+$preference = new MercadoPago\Preference();
+
+//excluir medios de pago
+$preference->payment_methods = array(
+  "excluded_payment_methods" => array(
+    array("id" => "amex")
+  ),
+  "excluded_payment_types" => array(
+    array("id" => "atm")
+  ),
+  "installments" => 6
+);
+
+//paginas de retorno
+$preference->back_urls = array(
+    "success" => "https://margufo-mp-commerce-php.herokuapp.com/felicitaciones.php",
+    "failure" => "https://margufo-mp-commerce-php.herokuapp.com/error.php",
+    "pending" => "https://margufo-mp-commerce-php.herokuapp.com/pendiente.php"
+);
+$preference->auto_return = "approved";
+
+//datos del pagador
+$payer = new MercadoPago\Payer();
+  $payer->name = "Lalo";
+  $payer->surname = "Landa";
+  $payer->email = "test_user_63274575@testuser.com";
+ // $payer->date_created = "2018-06-02T12:58:41.425-04:00";
+  $payer->phone = array(
+    "area_code" => "11",
+    "number" => "22223333"
+  );
+  
+//  $payer->identification = array(
+//    "type" => "DNI",
+//    "number" => "12345678"
+//  );
+  
+  $payer->address = array(
+    "street_name" => "False",
+    "street_number" => 123,
+    "zip_code" => "1111"
+  );
+
+$preference->payer = array($payer);
+
+// Crea un ítem en la preferencia
+$item = new MercadoPago\Item();
+$item->id = "1234";
+$item->title = $_POST['title'];
+$item->description = "Dispositivo móvil de Tienda e-commerce";
+$item->category_id = "phones";
+$item->quantity = 1;
+//$item->currency_id = "ARS";
+$item->unit_price = $_POST['price'];
+$item->external_reference = "margufo@gmail.com";
+
+$preference->items = array($item);
+
+$preference->save();
+
+
+?>
+
 <html class="supports-animation supports-columns svg no-touch no-ie no-oldie no-ios supports-backdrop-filter as-mouseuser" lang="en-US"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     
     <meta name="viewport" content="width=1024">
@@ -130,7 +202,14 @@
                                             <?php echo "$" . $_POST['unit'] ?>
                                         </h3>
                                     </div>
-                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                                    <form action="/procesar-pago" method="POST">
+                                    <script
+                                    src="https://www.mercadopago.com.ar/integrations/v1/web-payment-checkout.js"
+                                    data-preference-id="<?php echo $preference->id; ?>">
+                                    </script>
+                                    
+                                    <button type="submit" class="mercadopago-button" formmethod="post">Pagar la compra</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
