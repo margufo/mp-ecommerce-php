@@ -51,7 +51,7 @@ $payer = new MercadoPago\Payer();
     "zip_code" => "1111"
   );
 
-//$preference->payer = array($payer);
+$preference->payer = $payer;
 
 // Crea un ítem en la preferencia
 $item = new MercadoPago\Item();
