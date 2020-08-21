@@ -23,7 +23,7 @@ $preference->payment_methods = array(
 
 //paginas de retorno
 $preference->back_urls = array(
-    "success" => "https://margufo-mp-commerce-php.herokuapp.com/felicitaciones.php",
+    "success" => "https://margufo-mp-commerce-php.herokuapp.com/success.php",
     "failure" => "https://margufo-mp-commerce-php.herokuapp.com/error.php",
     "pending" => "https://margufo-mp-commerce-php.herokuapp.com/pendiente.php"
 );
@@ -61,6 +61,7 @@ $item->description = "Dispositivo móvil de Tienda e-commerce";
 $item->category_id = "phones";
 $item->quantity = 1;
 //$item->currency_id = "ARS";
+$item->picture_url=str_replace("./","https://margufo-mp-commerce-php.herokuapp.com/",$_POST['img']);;
 $item->unit_price = $_POST['price'];
 $item->external_reference = "margufo@gmail.com";
 
