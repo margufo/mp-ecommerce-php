@@ -33,7 +33,7 @@ $preference->auto_return = "approved";
 $preference->notification_url = "https://margufo-mp-commerce-php.herokuapp.com/notificaciones/";
 
 //Definir init point
-$preference->init_point = "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=469485398-3cb03c60-d017-49e1-93fb-6bc1c73b654e";
+//$preference->init_point = "https://www.mercadopago.com.ar/checkout/v1/redirect?pref_id=469485398-3cb03c60-d017-49e1-93fb-6bc1c73b654e";
 
 //datos del pagador
 $payer = new MercadoPago\Payer();
