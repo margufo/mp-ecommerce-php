@@ -25,9 +25,12 @@ $preference->payment_methods = array(
 $preference->back_urls = array(
     "success" => "https://margufo-mp-commerce-php.herokuapp.com/success.php",
     "failure" => "https://margufo-mp-commerce-php.herokuapp.com/error.php",
-    "pending" => "https://margufo-mp-commerce-php.herokuapp.com/pendiente.php"
+    "pending" => "https://margufo-mp-commerce-php.herokuapp.com/pending.php"
 );
 $preference->auto_return = "approved";
+
+// url de notificaciones
+$preference->notification_url = "https://margufo-mp-commerce-php.herokuapp.com/notificaciones/";
 
 //datos del pagador
 $payer = new MercadoPago\Payer();
@@ -84,6 +87,8 @@ $preference->save();
     src="https://code.jquery.com/jquery-3.4.1.min.js"
     integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
     crossorigin="anonymous"></script>
+
+    <script src="https://www.mercadopago.com/v2/security.js" view="item"></script>
 
     <link rel="stylesheet" href="./assets/category-landing.css" media="screen, print">
 
